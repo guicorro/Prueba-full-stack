@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+  <div class="col-6">
+    <label for="">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      [(ngModel)]="newDocument.title"
+    />
+  </div>
+  <div class="col-6">
+    <label for="">Author</label>
+    <input
+      type="text"
+      class="form-control"
+      id="author"
+      name="author"
+      [(ngModel)]="newDocument.author"
+    />
+  </div>
+  <div class="col-12">
+    <label for="">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      rows="3"
+      name="description"
+      [(ngModel)]="newDocument.description"
+    ></textarea>
+  </div>
+  <div class="col-12">
+    <label for="">Content</label>
+    <textarea
+      class="form-control"
+      id="content"
+      rows="3"
+      name="content"
+      [(ngModel)]="newDocument.content"
+    ></textarea>
+  </div>
+  <button type="button" class="btn btn-success" (click)="create()">
+    Create
+  </button>
+</div>
+
+<div *ngIf="documents && documents.length != 0">
+  <li class="list-group-item listado" *ngFor="let item of documents">
+    <div class="text-center">
+      <span class="mr-2 float-left"> <b>Title: </b> {{ item.title }} </span>
+      <span><b>Author: </b> {{ item.author }}</span>
+      <span class="ml-2 float-right">
+        <b>Date: </b> {{ item.date.toLocaleDateString() }}
+        {{ item.date.toLocaleTimeString() }}
+      </span>
+    </div>
+    <span> <b>Description: </b> {{ item.description }}</span>
+    <span> <b>Content: </b> {{ item.content }}</span>
+    <button type="button" class="btn btn-danger" (click)="archive(item)">
+      Archive
+    </button>
+  </li>
+</div>

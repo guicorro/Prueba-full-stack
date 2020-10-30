@@ -1,0 +1,17 @@
+<div *ngIf="documents && documents.length != 0">
+  <li class="list-group-item listado" *ngFor="let item of documents">
+    <div class="text-center">
+      <span class="mr-2 float-left"> <b>Title: </b> {{ item.title }} </span>
+      <span> <b>Author: </b> {{ item.author }} </span>
+      <span class="ml-2 float-right"
+        ><b>Date: </b> {{ item.archiveDate.toLocaleDateString() }}
+        {{ item.archiveDate.toLocaleTimeString() }}
+      </span>
+    </div>
+    <span><b>Description: </b> {{ item.description }}</span>
+    <span><b>Content: </b> {{ item.content }}</span>
+    <button type="button" class="btn btn-danger" (click)="delete(item)">
+      Delete
+    </button>
+  </li>
+</div>
